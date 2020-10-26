@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from animes.views import inicio
+from animes.views import inicio_snk
+from animes.views import galeria_snk
+from animes.views import personajes_snk
+from animes.views import formulario_snk
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('animes/', include('animes.urls')),
     path ("", inicio, name="inicio"),
-    
+    path ("inicio_snk/", inicio_snk, name="inicio_snk"),
+    path ("galeria_snk/", galeria_snk, name="galeria_snk"),
+    path ("personajes_snk/", personajes_snk, name="personajes_snk"),
+    path ("formulario_snk/", formulario_snk, name="formulario_snk"),
 ]
