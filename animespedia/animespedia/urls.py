@@ -16,15 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from animes.views import inicio
-from animes.views import inicio_snk
-from animes.views import galeria_snk
-from animes.views import personajes_snk
-from animes.views import formulario_snk
+from animes.views import (AnimeListView, AnimeDetailView, AnimeDelete,AnimeCreate,AnimeUpdate, inicio_snk ,galeria_snk ,personajes_snk, formulario_snk)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('animes/', include('animes.urls')),
-    path ("", inicio, name="inicio"),
+
+    path ("", AnimeListView.as_view(), name="inicio"),
+    path ("animes/<int:pk>/", AnimeDetailView.as_view(), name="detalle_anime"),
+    path ("animes/<int:pk>/delete", AnimeDelete.as_view(), name="borrar_anime"),
+    path ("animes/create", AnimeCreate.as_view(), name="crear_anime"),
+    path ("animes/<int:pk>/update", AnimeUpdate.as_view(), name="editar_anime"),
+
+
     path ("inicio_snk/", inicio_snk, name="inicio_snk"),
     path ("galeria_snk/", galeria_snk, name="galeria_snk"),
     path ("personajes_snk/", personajes_snk, name="personajes_snk"),

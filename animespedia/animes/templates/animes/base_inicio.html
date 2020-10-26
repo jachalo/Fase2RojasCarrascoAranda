@@ -1,7 +1,28 @@
+{% load static %}
 <!doctype html>
 <html>
 
 {%include 'animes/inicio/head_inicio.html' %}
 
-{%include 'animes/inicio/body_inicio.html' %}
+<body id="fondo"> 
+    <div class="container">   
+     <br><br><br><br><br>
+      <div class="row">
+        {% for anime in object_list %}
+        <div class="col-md">        
+            <div class="card text-center" >
+              <img class="card-img-top" src="{% static 'img/shingeki.jpg' %}" height="550" alt="Card image">  
+              <div class="card-body">
+                <h4 class="card-title">{{anime.nombre}}</h4>
+                <p class="card-text">{{anime.descripcion_corta}}</p>
+                <a href="{% url 'detalle_anime' anime.pk %}" class="stretched-link"></a>
+              </div>
+            </div>          
+        </div>
+        {% endfor %}
+  
+
+      </div>
+    </div>
+  </body>
 </html>

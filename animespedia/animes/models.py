@@ -23,7 +23,11 @@ class AnimeGen(models.Model):
 
 class Anime(models.Model):
 	nombre=models.CharField(max_length=100)
-	descripcion = models.TextField(max_length=1000)
-	autor=models.ForeignKey(Autor,on_delete= models.CASCADE)
-	genero=models.ForeignKey(AnimeGen,on_delete= models.CASCADE)
+	descripcion = models.TextField()
+	descripcion_corta = models.TextField(max_length=500)
+	autor=models.ForeignKey(Autor,on_delete= models.CASCADE, blank=True, null=True)
+	genero=models.ForeignKey(AnimeGen,on_delete= models.CASCADE, blank=True, null=True)
+
+	def __str__(self):
+ 		return self.nombre
 
