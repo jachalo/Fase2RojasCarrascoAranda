@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from animes.views import (AnimeListView, AnimeDetailView, AnimeDelete,AnimeCreate,AnimeUpdate, inicio_snk ,galeria_snk ,personajes_snk, formulario_snk)
+from animes.views import (AnimeListView, AnimeDetailView, AnimeDelete,AnimeCreate,AnimeUpdate, inicio_snk ,galeria_snk ,personajes_snk, formulario_snk, inicio_snk_real,inicio_storm
+,galeria_storm, personajes_storm, test_storm, inicio_op, personajes_op, galeria_op, test_op)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,10 +28,24 @@ urlpatterns = [
     path ("animes/<int:pk>/delete", AnimeDelete.as_view(), name="borrar_anime"),
     path ("animes/create", AnimeCreate.as_view(), name="crear_anime"),
     path ("animes/<int:pk>/update", AnimeUpdate.as_view(), name="editar_anime"),
+]
 
+urlpatterns += [
+    path('admin/', admin.site.urls),
+    path ('animes/', include('animes.urls')),
 
     path ("inicio_snk/", inicio_snk, name="inicio_snk"),
     path ("galeria_snk/", galeria_snk, name="galeria_snk"),
     path ("personajes_snk/", personajes_snk, name="personajes_snk"),
     path ("formulario_snk/", formulario_snk, name="formulario_snk"),
+    path ("inicio_snk_real/", inicio_snk_real, name="inicio_snk_real"),
+
+    path ("inicio_storm/", inicio_storm, name="inicio_storm"),
+    path ("galeria_storm/", galeria_storm, name="galeria_storm"),
+    path ("personajes_storm/", personajes_storm, name="personajes_storm"),
+    path ("test_storm/", test_storm, name="test_storm"),
+    path ("inicio_op/", inicio_op, name="inicio_op"),
+    path ("personajes_op/", personajes_op, name="personajes_op"),
+    path ("galeria_op/", galeria_op, name="galeria_op"),
+    path ("test_op/", test_op, name="test_op"),
 ]
