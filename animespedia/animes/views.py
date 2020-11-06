@@ -40,8 +40,8 @@ class AnimeUpdate(UpdateView):
 
 
 
-def inicio_snk (request):
-    return render(request, "animes/base_inicio_snk.html")
+def inicio_anime (request):
+    return render(request, "animes/base_inicio_anime.html")
 def galeria_snk (request):
     return render(request, "animes/base_galeria_snk.html")
 def personajes_snk (request):
